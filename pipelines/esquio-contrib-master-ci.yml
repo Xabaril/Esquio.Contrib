@@ -62,17 +62,18 @@ steps:
     packagesToPack: './src/LocationToggle/LocationToggles.csproj'
     packDirectory: '$(Build.ArtifactStagingDirectory)'
     versioningScheme: 'off'
+    buildProperties: 'VersionSuffix=-preview.$(Build.BuildNumber)'
 - task: PublishBuildArtifacts@1
   displayName: 'publish artifacts'
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: 'packages'
     publishLocation: 'Container'
-# - task: NuGetCommand@2
-#   displayName: 'push package to Release NuGet Feed'
-#   inputs:
-#     command: 'push'
-#     packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
-#     nuGetFeedType: 'external'
-#     publishFeedCredentials: 'Nuget Release'
+- task: NuGetCommand@2
+  displayName: 'push package to MyGet Preview Feed'
+  inputs:
+    command: 'push'
+    packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
+    nuGetFeedType: 'external'
+    publishFeedCredentials: 'MyGet Preview Feed'
     
