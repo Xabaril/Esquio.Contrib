@@ -4,9 +4,10 @@ trigger:
     branches:
         include:
         - master
-    tags:
+    paths:
         include:
-        - release-*
+        - src/*
+        - tests/*
 
 pool:
   name: Hosted Ubuntu 1604
