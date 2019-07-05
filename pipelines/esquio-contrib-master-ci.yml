@@ -39,7 +39,7 @@ steps:
     command: restore
     projects: '**/Esquio.Contrib.sln'
     feedsToUse: 'config'
-    nugetConfigPath: './Nuget.config'
+    nugetConfigPath: 'NuGet.config'
 - task: DotNetCoreCLI@2
   displayName: 'dotnet build'
   inputs:
