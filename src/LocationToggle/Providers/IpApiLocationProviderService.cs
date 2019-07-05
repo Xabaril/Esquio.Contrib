@@ -16,7 +16,8 @@ namespace LocationToggles.Providers
         static JsonSerializerOptions _serializerOptions = new JsonSerializerOptions()
         {
             PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
-            DictionaryKeyPolicy = JsonNamingPolicy.CamelCase
+            DictionaryKeyPolicy = JsonNamingPolicy.CamelCase,
+            AllowTrailingCommas = true
         };
 
         private readonly IHttpClientFactory _httpClientFactory;
