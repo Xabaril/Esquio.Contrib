@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Esquio" Version="$(esquio)" />
+    <PackageReference Include="Microsoft.AspNetCore.Http" Version="$(microsoftaspnetcorehttp)" />
+    
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="$(NetTestSdk)" />
+    <PackageReference Include="xunit" Version="$(xunit)" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="$(xunit)" />
+    <PackageReference Include="FluentAssertions" Version="$(fluentassertions)" />
+    
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\LocationToggle\LocationToggles.csproj" />
+  </ItemGroup>
+
+</Project>
