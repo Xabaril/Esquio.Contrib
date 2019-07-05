@@ -37,6 +37,7 @@ steps:
   inputs:
     command: restore
     projects: '**/Esquio.Contrib.sln'
+    nugetConfigPath: './Nuget.config'
 - task: DotNetCoreCLI@2
   displayName: 'dotnet build'
   inputs:
@@ -74,3 +75,4 @@ steps:
 #     packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
 #     nuGetFeedType: 'external'
 #     publishFeedCredentials: 'Nuget Release'
+    
