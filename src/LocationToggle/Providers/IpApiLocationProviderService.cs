@@ -37,14 +37,15 @@ namespace LocationToggles.Providers
             return data?.Country;
         }
 
+        public async Task<string> GetCountryCode(string ipaddress, CancellationToken cancellationToken = default)
+        {
+            var data = await GetIpDataFrom(ipaddress, cancellationToken);
+
+            return data?.CountryCode;
+        }
+
         private async Task<IPApiData> GetIpDataFrom(string ipaddress, CancellationToken cancellationToken = default)
         {
-#if DEBUG
-            if (ipaddress == "0.0.0.1")
-            {
-                ipaddress = "213.97.0.42";
-            }
-#endif
             try
             {
                 var httpClient = _httpClientFactory

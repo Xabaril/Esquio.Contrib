@@ -12,7 +12,7 @@ using Xunit;
 
 namespace FunctionalTests.LocationToggles.IpApi
 {
-    public class ipapi_countrynamelocationtoggle_should
+    public class ipapi_countrycodelocationtoggle_should
     {
         private const string Countries = nameof(Countries);
 
@@ -23,7 +23,7 @@ namespace FunctionalTests.LocationToggles.IpApi
 
             await Assert.ThrowsAsync<ArgumentNullException>(async () =>
             {
-                await new CountryNameLocationToggle(null, new DefaulHttpContextAccessor(), GetIpApiLocationProviderService())
+                await new CountryCodeLocationToggle(null, new DefaulHttpContextAccessor(), GetIpApiLocationProviderService())
                     .IsActiveAsync(featureName);
             });
         }
@@ -34,8 +34,8 @@ namespace FunctionalTests.LocationToggles.IpApi
             var featureName = "feature-1";
 
             var toggle = Build
-                  .Toggle<CountryNameLocationToggle>()
-                  .AddOneParameter(Countries, "Spain;France;Germany")
+                  .Toggle<CountryCodeLocationToggle>()
+                  .AddOneParameter(Countries, "ES;FR;IT")
                   .Build();
 
             var feature = Build
@@ -51,7 +51,7 @@ namespace FunctionalTests.LocationToggles.IpApi
 
             await Assert.ThrowsAsync<ArgumentNullException>(async () =>
             {
-                await new CountryNameLocationToggle(store, null, GetIpApiLocationProviderService())
+                await new CountryCodeLocationToggle(store, null, GetIpApiLocationProviderService())
                     .IsActiveAsync(featureName);
             });
         }
@@ -62,8 +62,8 @@ namespace FunctionalTests.LocationToggles.IpApi
             var featureName = "feature-1";
 
             var toggle = Build
-                  .Toggle<CountryNameLocationToggle>()
-                  .AddOneParameter(Countries, "Spain;France;Germany")
+                  .Toggle<CountryCodeLocationToggle>()
+                  .AddOneParameter(Countries, "ES;FR;IT")
                   .Build();
 
             var feature = Build
@@ -79,7 +79,7 @@ namespace FunctionalTests.LocationToggles.IpApi
 
             await Assert.ThrowsAsync<ArgumentNullException>(async () =>
             {
-                await new CountryNameLocationToggle(store, new DefaulHttpContextAccessor(), null)
+                await new CountryCodeLocationToggle(store, new DefaulHttpContextAccessor(), null)
                     .IsActiveAsync(featureName);
             });
         }
@@ -90,8 +90,8 @@ namespace FunctionalTests.LocationToggles.IpApi
             var featureName = "feature-1";
 
             var toggle = Build
-                  .Toggle<CountryNameLocationToggle>()
-                  .AddOneParameter(Countries, "Spain;France;Germany")
+                  .Toggle<CountryCodeLocationToggle>()
+                  .AddOneParameter(Countries, "ES;FR;IT")
                   .Build();
 
             var feature = Build
@@ -104,7 +104,7 @@ namespace FunctionalTests.LocationToggles.IpApi
                 return feature;
             });
 
-            var isActive = await new CountryNameLocationToggle(store, new DefaulHttpContextAccessor(), GetIpApiLocationProviderService())
+            var isActive = await new CountryCodeLocationToggle(store, new DefaulHttpContextAccessor(), GetIpApiLocationProviderService())
                 .IsActiveAsync(featureName);
 
             isActive.Should().BeTrue();
@@ -116,8 +116,8 @@ namespace FunctionalTests.LocationToggles.IpApi
             var featureName = "feature-1";
 
             var toggle = Build
-                  .Toggle<CountryNameLocationToggle>()
-                  .AddOneParameter(Countries, "Spain")
+                  .Toggle<CountryCodeLocationToggle>()
+                  .AddOneParameter(Countries, "ES")
                   .Build();
 
             var feature = Build
@@ -130,7 +130,7 @@ namespace FunctionalTests.LocationToggles.IpApi
                 return feature;
             });
 
-            var isActive = await new CountryNameLocationToggle(store, new DefaulHttpContextAccessor(), GetIpApiLocationProviderService())
+            var isActive = await new CountryCodeLocationToggle(store, new DefaulHttpContextAccessor(), GetIpApiLocationProviderService())
                 .IsActiveAsync(featureName);
 
             isActive.Should().BeTrue();
@@ -142,8 +142,8 @@ namespace FunctionalTests.LocationToggles.IpApi
             var featureName = "feature-1";
 
             var toggle = Build
-                  .Toggle<CountryNameLocationToggle>()
-                  .AddOneParameter(Countries, "France")
+                  .Toggle<CountryCodeLocationToggle>()
+                  .AddOneParameter(Countries, "FR")
                   .Build();
 
             var feature = Build
@@ -156,7 +156,7 @@ namespace FunctionalTests.LocationToggles.IpApi
                 return feature;
             });
 
-            var isActive = await new CountryNameLocationToggle(store, new DefaulHttpContextAccessor(), GetIpApiLocationProviderService())
+            var isActive = await new CountryCodeLocationToggle(store, new DefaulHttpContextAccessor(), GetIpApiLocationProviderService())
                 .IsActiveAsync(featureName);
 
             isActive.Should().BeFalse();

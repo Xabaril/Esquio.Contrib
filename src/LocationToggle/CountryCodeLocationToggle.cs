@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace LocationToggles
 {
-    [DesignType(Description = "Toggle that is active depending on Country names for the request ip location.")]
-    [DesignTypeParameter(ParameterName = Countries, ParameterType = "System.String", ParameterDescription = "Collection of country names delimited by ';' character.")]
-    public class CountryNameLocationToggle
+    [DesignType(Description = "Toggle that is active depending on Country code for the request ip location.")]
+    [DesignTypeParameter(ParameterName = Countries, ParameterType = "System.String", ParameterDescription = "Collection of country codes delimited by ';' character.")]
+    public class CountryCodeLocationToggle
       : IToggle
     {
         const string Countries = nameof(Countries);
@@ -21,7 +21,7 @@ namespace LocationToggles
         private readonly ILocationProviderService _locationProviderService;
         private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public CountryNameLocationToggle(IRuntimeFeatureStore featureStore, IHttpContextAccessor httpContextAccessor, ILocationProviderService locationProviderService)
+        public CountryCodeLocationToggle(IRuntimeFeatureStore featureStore, IHttpContextAccessor httpContextAccessor, ILocationProviderService locationProviderService)
         {
             _featureStore = featureStore ?? throw new ArgumentNullException();
             _httpContextAccessor = httpContextAccessor ?? throw new ArgumentNullException(nameof(httpContextAccessor));
@@ -36,7 +36,7 @@ namespace LocationToggles
 
             string allowedCountries = data.Countries;
             var currentCountry = await _locationProviderService
-                .GetCountryName(GetRemoteIpAddress());
+                .GetCountryCode(GetRemoteIpAddress());
 
             if (allowedCountries != null
                 &&

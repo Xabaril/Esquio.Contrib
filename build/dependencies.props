@@ -18,6 +18,7 @@
 
   <PropertyGroup Label="Package Versions">
     <locationtoggles>1.0.0$(VersionSuffix)</locationtoggles>
+    <browsertoggles>1.0.0$(VersionSuffix)</browsertoggles>
   </PropertyGroup>
   
   <PropertyGroup Label="Package Dependencies">
