@@ -65,6 +65,15 @@ steps:
     packDirectory: '$(Build.ArtifactStagingDirectory)'
     versioningScheme: 'off'
     buildProperties: 'VersionSuffix=-preview.$(Build.BuildNumber)'
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet pack BrowserToggles'
+  inputs:
+    command: 'pack'
+    feedsToUse: 'select'
+    packagesToPack: './src/BrowserToggles/BrowserToggles.csproj'
+    packDirectory: '$(Build.ArtifactStagingDirectory)'
+    versioningScheme: 'off'
+    buildProperties: 'VersionSuffix=-preview.$(Build.BuildNumber)'
 - task: PublishBuildArtifacts@1
   displayName: 'publish artifacts'
   inputs:
