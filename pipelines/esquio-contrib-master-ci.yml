@@ -70,7 +70,7 @@ steps:
   inputs:
     command: 'pack'
     feedsToUse: 'select'
-    packagesToPack: './src/BrowserToggles/BrowserToggles.csproj'
+    packagesToPack: './src/UserAgentToggles/UserAgentToggles.csproj'
     packDirectory: '$(Build.ArtifactStagingDirectory)'
     versioningScheme: 'off'
     buildProperties: 'VersionSuffix=-preview.$(Build.BuildNumber)'
