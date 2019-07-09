@@ -1,2 +1,107 @@
+[![Build Status](https://dev.azure.com/xabaril/Esquio.Contrib/_apis/build/status/esquio-contrib-master-ci?branchName=master)](https://dev.azure.com/xabaril/Esquio.Contrib/_build/latest?definitionId=6&branchName=master)
+
 # Esquio.Contrib
-Community contribution Toggles and extensions for Esquio
+
+Esquio.Contrib is a community contribution Toggles and extensions for [Esquio](https://github.com/xabaril/Esquio)
+
+## LocationToggles
+
+### CountryNameLocationToggle
+
+Toggle that is active depending on the request ip country name. To use this toggle you need to install the LocationToggles package using the .NET CLI.
+
+```cmd
+dotnet install Esquio.LocationToggles
+```
+
+or using PowerShell | Package Manager.
+
+```powershell
+install-package Esquio.LocationToggles
+```
+
+Now, you can register new toggles on *Esquio* setup.
+
+```csharp
+    services.AddEsquio(setup => setup.RegisterTogglesFromAssembly(typeof(CountryNameLocationToggle).Assembly))
+        .AddAspNetCoreDefaultServices()
+        .AddConfigurationStore(Configuration, "Esquio")
+``` 
+Now, you can configure your features using this new toggle, as we show on next configuration sample for Esquio.
+
+```json
+{
+  "Esquio": {
+    "Products": [
+      {
+        "Name": "default",
+        "Features": [
+          {
+            "Name": "HiddenGem",
+            "Enabled": true,
+            "Toggles": [
+              {
+                "Type": "LocationToggles.CountryNameLocationToggle, LocationToggles",
+                "Parameters": {
+                  "Countries": "Spain"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
+
+```
+
+### CountryCodeLocationToggle
+
+Toggle that is active depending on the request ip country international code. To use this toggle you need to install the LocationToggles package using the .NET CLI.
+
+```cmd
+dotnet install Esquio.LocationToggles
+```
+
+or using PowerShell | Package Manager.
+
+```powershell
+install-package Esquio.LocationToggles
+```
+
+Now, you can register new toggles on *Esquio* setup.
+
+```csharp
+    services.AddEsquio(setup => setup.RegisterTogglesFromAssembly(typeof(CountryNameLocationToggle).Assembly))
+        .AddAspNetCoreDefaultServices()
+        .AddConfigurationStore(Configuration, "Esquio")
+``` 
+Now, you can configure your features using this new toggle, as we show on next configuration sample for Esquio.
+
+```json
+{
+  "Esquio": {
+    "Products": [
+      {
+        "Name": "default",
+        "Features": [
+          {
+            "Name": "HiddenGem",
+            "Enabled": true,
+            "Toggles": [
+              {
+                "Type": "LocationToggles.CountryCodeLocationToggle, LocationToggles",
+                "Parameters": {
+                  "Countries": "ES;IT"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
+
+```

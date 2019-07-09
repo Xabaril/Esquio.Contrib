@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>$(NetStandardTargetVersion)</TargetFramework>
+    <PackageLicenseUrl>$(PackageLicenseUrl)</PackageLicenseUrl>
+    <PackageProjectUrl>$(PackageProjectUrl)</PackageProjectUrl>
+    <Description>Community user-agent toggles for Esquio. For more information see http://github.com/Xabaril/Esquio </Description>
+    <PackageTags>Esquio;UserAgent Toggle;AspNetCore</PackageTags>
+    <Version>$(useragenttoggles)</Version>
+    <RepositoryUrl>$(RepositoryUrl)</RepositoryUrl>
+    <Company>$(Company)</Company>
+    <Authors>$(Authors)</Authors>
+    <PackageId>Esquio.UserAgentToggles</PackageId>
+    <PackageVersion>$(useragenttoggles)</PackageVersion>
+    <PublishRepositoryUrl>$(RepositoryUrl)</PublishRepositoryUrl>
+    <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder)</AllowedOutputExtensionsInPackageBuildOutputFolder>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Esquio" Version="$(esquio)" />
+    <PackageReference Include="System.Text.Json" Version="$(systemtextjson)" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="$(microsoftaspnetcorehttpabstractions)"/>
+    <PackageReference Include="Microsoft.Extensions.Http" Version="$(microsoftextensionshttp)"/>
+  </ItemGroup>
+
+</Project>
