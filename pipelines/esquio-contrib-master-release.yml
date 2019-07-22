@@ -3,7 +3,8 @@ trigger:
     batch: true
     tags:
         include:
-        - release-*
+        -  refs/tags/release-*
+  
 
 pool:
   name: Hosted Ubuntu 1604
