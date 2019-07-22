@@ -38,8 +38,7 @@ namespace UserAgentToggles
             var allowedBrowsers = data.Browsers.ToString();
             var currentBrowser = GetCurrentBrowser();
 
-            if (allowedBrowsers != null 
-                && !String.IsNullOrEmpty(currentBrowser))
+            if (allowedBrowsers != null && !String.IsNullOrEmpty(currentBrowser))
             {
                 _logger.LogDebug($"{nameof(UserAgentBrowserToggle)} is trying to verify if {currentBrowser} is satisfying allowed browser configuration.");
 

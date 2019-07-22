@@ -29,7 +29,7 @@
   </PropertyGroup>
 
   <PropertyGroup Label="Esquio Dependencies">
-    <esquio>1.0.0-preview.21</esquio>
+    <esquio>1.0.0-preview.44</esquio>
   </PropertyGroup>
 
   <PropertyGroup Label="Testing Dependencies">
