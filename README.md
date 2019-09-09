@@ -26,8 +26,9 @@ Now, you can register new toggles on *Esquio* setup.
     services.AddEsquio(setup => setup.RegisterTogglesFromAssembly(typeof(CountryNameLocationToggle).Assembly))
         .AddAspNetCoreDefaultServices()
         .AddConfigurationStore(Configuration, "Esquio")
-``` 
-Now, you can configure your features using this new toggle, as we show on next configuration sample for Esquio.
+```
+
+and configure your features using this new toggle, as we show on next configuration sample for Esquio. Of course, you can use also our Entity Framework Store.
 
 ```json
 {
@@ -76,8 +77,9 @@ Now, you can register new toggles on *Esquio* setup.
     services.AddEsquio(setup => setup.RegisterTogglesFromAssembly(typeof(CountryNameLocationToggle).Assembly))
         .AddAspNetCoreDefaultServices()
         .AddConfigurationStore(Configuration, "Esquio")
-``` 
-Now, you can configure your features using this new toggle, as we show on next configuration sample for Esquio.
+```
+
+and configure your features using this new toggle, as we show on next configuration sample for Esquio. Of course, you can use also our Entity Framework Store.
 
 ```json
 {
@@ -104,4 +106,56 @@ Now, you can configure your features using this new toggle, as we show on next c
   }
 }
 
+```
+
+## UserAgentToggles
+
+### UserAgentBrowserToggle
+
+Toggle that is active depending on the request user agent header value. To use this toggle you need to install the LocationToggles package using the .NET CLI.
+
+```cmd
+dotnet install Esquio.UserAgentToggles
+```
+
+or using PowerShell | Package Manager.
+
+```powershell
+install-package Esquio.UserAgentToggles
+```
+
+Now, you can register new toggle on *Esquio* setup.
+
+```csharp
+    services.AddEsquio(setup => setup.RegisterTogglesFromAssembly(typeof(UserAgentBrowserToggle).Assembly))
+        .AddAspNetCoreDefaultServices()
+        .AddConfigurationStore(Configuration, "Esquio")
+```
+
+and configure your features using this new toggle, as we show on next configuration sample for Esquio. Of course, you can use also our Entity Framework Store.
+
+```json
+{
+  "Esquio": {
+    "Products": [
+      {
+        "Name": "default",
+        "Features": [
+          {
+            "Name": "HiddenGem",
+            "Enabled": true,
+            "Toggles": [
+              {
+                "Type": "UserAgentToggles.UserAgentBrowserToggle, UseAgentToggles",
+                "Parameters": {
+                  "Browsers": "Chrome"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
 ```
