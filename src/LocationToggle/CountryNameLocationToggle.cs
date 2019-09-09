@@ -1,4 +1,5 @@
-﻿using Esquio.Abstractions;
+﻿using Esquio;
+using Esquio.Abstractions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Primitives;
 using System;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 namespace LocationToggles
 {
     [DesignType(Description = "Toggle that is active depending on Country names for the request ip location.")]
-    [DesignTypeParameter(ParameterName = Countries, ParameterType = "System.String", ParameterDescription = "Collection of country names delimited by ';' character.")]
+    [DesignTypeParameter(ParameterName = Countries, ParameterType = EsquioConstants.SEMICOLON_LIST_PARAMETER_TYPE, ParameterDescription = "Collection of country names delimited by ';' character.")]
     public class CountryNameLocationToggle
       : IToggle
     {

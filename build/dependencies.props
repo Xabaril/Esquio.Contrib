@@ -1,6 +1,6 @@
 <Project>
   <PropertyGroup Label="SDK Versions">
-    <NetStandardTargetVersion>netstandard2.0</NetStandardTargetVersion>
+    <NetStandardTargetVersion>netstandard2.1</NetStandardTargetVersion>
     <NetCoreTargetVersion>netcoreapp3.0</NetCoreTargetVersion>
     <NetTestSdk>16.2.0</NetTestSdk>
     <LangVersion>preview</LangVersion>
@@ -22,14 +22,14 @@
   </PropertyGroup>
   
   <PropertyGroup Label="Package Dependencies">
-    <systemtextjson>4.6.0-preview6.19303.8</systemtextjson>
+    <systemtextjson>4.6.0-preview9.19421.4</systemtextjson>
     <microsoftaspnetcorehttpabstractions>2.2.0</microsoftaspnetcorehttpabstractions>
     <microsoftaspnetcorehttp>2.2.2</microsoftaspnetcorehttp>
-    <microsoftextensionshttp>3.0.0-preview6.19304.6</microsoftextensionshttp>
+    <microsoftextensionshttp>3.0.0-preview9.19423.4</microsoftextensionshttp>
   </PropertyGroup>
 
   <PropertyGroup Label="Esquio Dependencies">
-    <esquio>1.0.0-preview.21</esquio>
+    <esquio>1.0.0-preview.53</esquio>
   </PropertyGroup>
 
   <PropertyGroup Label="Testing Dependencies">

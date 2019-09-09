@@ -1,4 +1,5 @@
-﻿using Esquio.Abstractions;
+﻿using Esquio;
+using Esquio.Abstractions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Primitives;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 namespace UserAgentToggles
 {
     [DesignType(Description = "Toggle that is active depending on request browser information.")]
-    [DesignTypeParameter(ParameterName = Browsers, ParameterType = "System.String", ParameterDescription = "Collection of browser names delimited by ';' character.")]
+    [DesignTypeParameter(ParameterName = Browsers, ParameterType = EsquioConstants.SEMICOLON_LIST_PARAMETER_TYPE, ParameterDescription = "Collection of browser names delimited by ';' character.")]
     public class UserAgentBrowserToggle
         : IToggle
     {
