@@ -16,7 +16,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{2EE60E1C
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FunctionalTests", "tests\FunctionalTests\FunctionalTests.csproj", "{3AA5DEAF-BF47-48D0-A7C0-66FB414E7AB8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserAgentToggles", "src\UserAgentToggles\UserAgentToggles.csproj", "{CE68AED2-3D58-4E35-AE64-D9FAF0D29B18}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserAgentToggles", "src\UserAgentToggles\UserAgentToggles.csproj", "{CE68AED2-3D58-4E35-AE64-D9FAF0D29B18}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
