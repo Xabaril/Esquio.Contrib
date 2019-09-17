@@ -19,7 +19,6 @@
   <PropertyGroup Label="Package Versions">
     <locationtoggles>1.0.0$(VersionSuffix)</locationtoggles>
     <useragenttoggles>1.0.0$(VersionSuffix)</useragenttoggles>
-    <hostnametoogles>1.0.0$(VersionSuffix)</hostnametoogles>
   </PropertyGroup>
   
   <PropertyGroup Label="Package Dependencies">
