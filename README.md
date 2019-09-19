@@ -257,7 +257,7 @@ and configure your features using this new toggle, as we show on next configurat
               {
                 "Type": "LocationToggles.HostNameToggle, LocationToggles",
                 "Parameters": {
-                  "IpAddresses": "localhost;domain.com"
+                  "HostNames": "localhost;domain.com"
                 }
               }
             ]
