@@ -108,6 +108,168 @@ and configure your features using this new toggle, as we show on next configurat
 
 ```
 
+### ClientIpAddressToggle
+
+The client IP address toggle activates a feature for ip addresses defined in the IP list. To use this toggle you need to install the LocationToggles package using the .NET CLI.
+
+```cmd
+dotnet install Esquio.LocationToggles
+```
+
+or using PowerShell | Package Manager.
+
+```powershell
+install-package Esquio.LocationToggles
+```
+
+Now, you can register new toggles on *Esquio* setup.
+
+```csharp
+    services
+        .AddEsquio(setup => 
+          setup.RegisterTogglesFromAssembly(typeof(ClientIpAddressToggle).Assembly)
+        )
+        .AddAspNetCoreDefaultServices()
+        .AddConfigurationStore(Configuration, "Esquio")
+```
+
+and configure your features using this new toggle, as we show on next configuration sample for Esquio. Of course, you can use also our Entity Framework Store.
+
+```json
+{
+  "Esquio": {
+    "Products": [
+      {
+        "Name": "default",
+        "Features": [
+          {
+            "Name": "HiddenGem",
+            "Enabled": true,
+            "Toggles": [
+              {
+                "Type": "LocationToggles.ClientIpAddressToggle, LocationToggles",
+                "Parameters": {
+                  "IpAddresses": "127.0.0.1;127.0.0.2"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
+
+```
+
+### ServerIpAddressToggle
+
+The server IP address toggle activates a feature for ip addresses defined in the IP list. To use this toggle you need to install the LocationToggles package using the .NET CLI.
+
+```cmd
+dotnet install Esquio.LocationToggles
+```
+
+or using PowerShell | Package Manager.
+
+```powershell
+install-package Esquio.LocationToggles
+```
+
+Now, you can register new toggles on *Esquio* setup.
+
+```csharp
+    services
+        .AddEsquio(setup => 
+          setup.RegisterTogglesFromAssembly(typeof(ServerIpAddressToggle).Assembly)
+        )
+        .AddAspNetCoreDefaultServices()
+        .AddConfigurationStore(Configuration, "Esquio")
+```
+
+and configure your features using this new toggle, as we show on next configuration sample for Esquio. Of course, you can use also our Entity Framework Store.
+
+```json
+{
+  "Esquio": {
+    "Products": [
+      {
+        "Name": "default",
+        "Features": [
+          {
+            "Name": "HiddenGem",
+            "Enabled": true,
+            "Toggles": [
+              {
+                "Type": "LocationToggles.ServerIpAddressToggle, LocationToggles",
+                "Parameters": {
+                  "IpAddresses": "127.0.0.1;127.0.0.2"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
+
+```
+
+### HostNameToggle
+
+The application hostname toggle activates a feature for client instances with a hostName in the hostNames list.. To use this toggle you need to install the LocationToggles package using the .NET CLI.
+
+```cmd
+dotnet install Esquio.LocationToggles
+```
+
+or using PowerShell | Package Manager.
+
+```powershell
+install-package Esquio.LocationToggles
+```
+
+Now, you can register new toggles on *Esquio* setup.
+
+```csharp
+    services
+        .AddEsquio(setup => 
+          setup.RegisterTogglesFromAssembly(typeof(HostNameToggle).Assembly)
+        )
+        .AddAspNetCoreDefaultServices()
+        .AddConfigurationStore(Configuration, "Esquio")
+```
+
+and configure your features using this new toggle, as we show on next configuration sample for Esquio. Of course, you can use also our Entity Framework Store.
+
+```json
+{
+  "Esquio": {
+    "Products": [
+      {
+        "Name": "default",
+        "Features": [
+          {
+            "Name": "HiddenGem",
+            "Enabled": true,
+            "Toggles": [
+              {
+                "Type": "LocationToggles.HostNameToggle, LocationToggles",
+                "Parameters": {
+                  "IpAddresses": "localhost;domain.com"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
+
+```
+
 ## UserAgentToggles
 
 ### UserAgentBrowserToggle
