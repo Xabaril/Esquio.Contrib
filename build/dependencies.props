@@ -22,10 +22,7 @@
   </PropertyGroup>
   
   <PropertyGroup Label="Package Dependencies">
-    <systemtextjson>4.6.0-preview9.19421.4</systemtextjson>
-    <microsoftaspnetcorehttpabstractions>2.2.0</microsoftaspnetcorehttpabstractions>
-    <microsoftaspnetcorehttp>2.2.2</microsoftaspnetcorehttp>
-    <microsoftextensionshttp>3.0.0-preview9.19423.4</microsoftextensionshttp>
+   
   </PropertyGroup>
 
   <PropertyGroup Label="Esquio Dependencies">
@@ -35,7 +32,7 @@
   <PropertyGroup Label="Testing Dependencies">
     <xunit>2.4.1</xunit>
     <xunitrunner>2.4.1</xunitrunner>
-    <fluentassertions>5.7.0</fluentassertions>
+    <fluentassertions>5.9 .0</fluentassertions>
   </PropertyGroup>
   
   <PropertyGroup Label="CLI Tools Versions">

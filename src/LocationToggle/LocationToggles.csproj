@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>$(NetStandardTargetVersion)</TargetFramework>
+    <TargetFramework>$(NetCoreTargetVersion)</TargetFramework>
     <PackageLicenseUrl>$(PackageLicenseUrl)</PackageLicenseUrl>
     <PackageProjectUrl>$(PackageProjectUrl)</PackageProjectUrl>
     <Description>Community location toggles for Esquio. For more information see http://github.com/Xabaril/Esquio </Description>
@@ -18,10 +18,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App"/>
     <PackageReference Include="Esquio" Version="$(esquio)" />
-    <PackageReference Include="System.Text.Json" Version="$(systemtextjson)" />
-    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="$(microsoftaspnetcorehttpabstractions)"/>
-    <PackageReference Include="Microsoft.Extensions.Http" Version="$(microsoftextensionshttp)"/>
   </ItemGroup>
 
 </Project>

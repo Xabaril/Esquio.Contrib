@@ -36,9 +36,11 @@ namespace LocationToggles
             var feature = await _featureStore.FindFeatureAsync(featureName, productName, cancellationToken);
             var toggle = feature.GetToggle(typeof(ClientIpAddressToggle).FullName);
             var data = toggle.GetData();
+
+            string ipAddresses = data.IpAddresses;
+
             var ipAddress = _contextAccessor.HttpContext.Connection.RemoteIpAddress;
             var bytes = ipAddress.GetAddressBytes();
-            string ipAddresses = data.IpAddresses;
             
             _logger.LogDebug($"{nameof(ClientIpAddressToggle)} is trying to verify if '{ipAddress}' is in the IP list.");
 

@@ -34,8 +34,10 @@ namespace LocationToggles
             var feature = await _featureStore.FindFeatureAsync(featureName, productName, cancellationToken);
             var toggle = feature.GetToggle(typeof(HostNameToggle).FullName);
             var data = toggle.GetData();
-            var hostName = _contextAccessor.HttpContext.Request.Host.Host;
+
             string hostNames = data.HostNames;
+
+            var hostName = _contextAccessor.HttpContext.Request.Host.Host;
             
             _logger.LogDebug($"{nameof(HostNameToggle)} is trying to verify if '{hostName}' is in the hostNames list.");
 
