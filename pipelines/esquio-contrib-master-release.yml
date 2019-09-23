@@ -1,9 +1,9 @@
 name: $(rev:r)
 trigger:
-    batch: true
+    batch: true  
     tags:
         include:
-        -  refs/tags/release-*
+        - release-*
   
 
 pool:
@@ -75,7 +75,6 @@ steps:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: 'packages'
     publishLocation: 'Container'
-
 - task: NuGetCommand@2
   displayName: 'push package to Release NuGet Feed'
   inputs:
