@@ -4,8 +4,7 @@ trigger:
     tags:
         include:
         - release-*
-  
-
+        
 pool:
   name: Hosted Ubuntu 1604
 
