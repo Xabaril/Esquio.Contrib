@@ -28,7 +28,7 @@ steps:
   displayName: 'install dotnet sdk'
   inputs:
     packageType: 'sdk'
-    version: '3.0.100-rc1-014190'
+    version: '3.0.100'
     includePreviewVersions: true
 - task: DotNetCoreCLI@2
   displayName: 'dotnet restore'
@@ -75,10 +75,11 @@ steps:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: 'packages'
     publishLocation: 'Container'
-# - task: NuGetCommand@2
-#   displayName: 'push package to Release NuGet Feed'
-#   inputs:
-#     command: 'push'
-#     packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
-#     nuGetFeedType: 'external'
-#     publishFeedCredentials: 'Nuget Release'
+
+- task: NuGetCommand@2
+  displayName: 'push package to Release NuGet Feed'
+  inputs:
+    command: 'push'
+    packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
+    nuGetFeedType: 'external'
+    publishFeedCredentials: 'Nuget Release'
