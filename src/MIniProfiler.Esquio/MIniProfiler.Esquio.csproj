@@ -1,25 +1,25 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>$(NetCoreTargetVersion)</TargetFramework>
+    <TargetFramework>$(NetStandardTargetVersion)</TargetFramework>
     <PackageLicenseUrl>$(PackageLicenseUrl)</PackageLicenseUrl>
     <PackageProjectUrl>$(PackageProjectUrl)</PackageProjectUrl>
-    <Description>Community location toggles for Esquio. For more information see http://github.com/Xabaril/Esquio.Contrib </Description>
-    <PackageTags>Esquio;Location Toggle;AspNetCore</PackageTags>
-    <Version>$(locationtoggles)</Version>
+    <Description>Community mini-profiler diagnostics for Esquio. For more information see http://github.com/Xabaril/Esquio.Contrib </Description>
+    <PackageTags>Esquio;Esquio Mini-Profiler;Mini-Profiler</PackageTags>
+    <Version>$(miniprofileresquio)</Version>
     <RepositoryUrl>$(RepositoryUrl)</RepositoryUrl>
     <Company>$(Company)</Company>
     <Authors>$(Authors)</Authors>
-    <PackageId>Esquio.LocationToggles</PackageId>
-    <PackageVersion>$(locationtoggles)</PackageVersion>
+    <PackageId>MiniProfiler.Esquio</PackageId>
+    <PackageVersion>$(miniprofileresquio)</PackageVersion>
     <PublishRepositoryUrl>$(RepositoryUrl)</PublishRepositoryUrl>
     <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder)</AllowedOutputExtensionsInPackageBuildOutputFolder>
     <LangVersion>latest</LangVersion>
   </PropertyGroup>
 
   <ItemGroup>
-    <FrameworkReference Include="Microsoft.AspNetCore.App"/>
     <PackageReference Include="Esquio" Version="$(esquio)" />
+    <PackageReference Include="MiniProfiler.Shared" Version="$(miniprofilershared)" />
   </ItemGroup>
 
 </Project>

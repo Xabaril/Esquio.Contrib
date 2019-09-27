@@ -4,7 +4,7 @@
     <TargetFramework>$(NetCoreTargetVersion)</TargetFramework>
     <PackageLicenseUrl>$(PackageLicenseUrl)</PackageLicenseUrl>
     <PackageProjectUrl>$(PackageProjectUrl)</PackageProjectUrl>
-    <Description>Community user-agent toggles for Esquio. For more information see http://github.com/Xabaril/Esquio </Description>
+    <Description>Community user-agent toggles for Esquio. For more information see http://github.com/Xabaril/Esquio.Contrib </Description>
     <PackageTags>Esquio;UserAgent Toggle;AspNetCore</PackageTags>
     <Version>$(useragenttoggles)</Version>
     <RepositoryUrl>$(RepositoryUrl)</RepositoryUrl>
