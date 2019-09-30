@@ -18,7 +18,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <FrameworkReference Include="Microsoft.AspNetCore.App"/>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Esquio" Version="$(esquio)" />
   </ItemGroup>
 
