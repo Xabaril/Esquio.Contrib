@@ -31,7 +31,7 @@ steps:
   displayName: 'install dotnet sdk'
   inputs:
     packageType: 'sdk'
-    version: '3.0.100-rc1-014190'
+    version: '3.0.100'
     includePreviewVersions: true
 - task: DotNetCoreCLI@2
   displayName: 'dotnet restore'
@@ -81,10 +81,10 @@ steps:
     ArtifactName: 'packages'
     publishLocation: 'Container'
 - task: NuGetCommand@2
-  displayName: 'push package to MyGet Preview Feed'
+  displayName: 'push package to Nuget Preview Feed'
   inputs:
     command: 'push'
     packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
     nuGetFeedType: 'external'
-    publishFeedCredentials: 'MyGet Preview Feed'
+    publishFeedCredentials: 'Nuget Release'
     
