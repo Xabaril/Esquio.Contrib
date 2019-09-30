@@ -2,7 +2,7 @@
   <PropertyGroup Label="SDK Versions">
     <NetStandardTargetVersion>netstandard2.1</NetStandardTargetVersion>
     <NetCoreTargetVersion>netcoreapp3.0</NetCoreTargetVersion>
-    <NetTestSdk>16.2.0</NetTestSdk>
+    <NetTestSdk>16.3.0</NetTestSdk>
     <LangVersion>preview</LangVersion>
   </PropertyGroup>
 
@@ -26,7 +26,7 @@
   </PropertyGroup>
 
   <PropertyGroup Label="Esquio Dependencies">
-    <esquio>1.0.0-preview.53</esquio>
+    <esquio>1.0.0</esquio>
   </PropertyGroup>
 
   <PropertyGroup Label="Testing Dependencies">
