@@ -80,4 +80,3 @@ steps:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: 'packages'
     publishLocation: 'Container'
-    
