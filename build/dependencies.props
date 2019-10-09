@@ -19,15 +19,10 @@
   <PropertyGroup Label="Package Versions">
     <locationtoggles>1.1.0$(VersionSuffix)</locationtoggles>
     <useragenttoggles>1.1.0$(VersionSuffix)</useragenttoggles>
-    <miniprofileresquio>1.1.0$(VersionSuffix)</miniprofileresquio>
   </PropertyGroup>
   
-  <PropertyGroup Label="Package Dependencies">
-    <miniprofilershared>4.1.0</miniprofilershared>
-  </PropertyGroup>
-
   <PropertyGroup Label="Esquio Dependencies">
-    <esquio>1.0.0</esquio>
+    <esquio>1.1.0-preview.4</esquio>
   </PropertyGroup>
 
   <PropertyGroup Label="Testing Dependencies">

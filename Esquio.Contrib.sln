@@ -18,8 +18,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FunctionalTests", "tests\Fu
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserAgentToggles", "src\UserAgentToggles\UserAgentToggles.csproj", "{CE68AED2-3D58-4E35-AE64-D9FAF0D29B18}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MIniProfiler.Esquio", "src\MIniProfiler.Esquio\MIniProfiler.Esquio.csproj", "{232C1A51-5934-4FBB-AEE4-554575A233E6}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -38,10 +36,6 @@ Global
 		{CE68AED2-3D58-4E35-AE64-D9FAF0D29B18}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CE68AED2-3D58-4E35-AE64-D9FAF0D29B18}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CE68AED2-3D58-4E35-AE64-D9FAF0D29B18}.Release|Any CPU.Build.0 = Release|Any CPU
-		{232C1A51-5934-4FBB-AEE4-554575A233E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{232C1A51-5934-4FBB-AEE4-554575A233E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{232C1A51-5934-4FBB-AEE4-554575A233E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{232C1A51-5934-4FBB-AEE4-554575A233E6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -50,7 +44,6 @@ Global
 		{D5795415-11AF-4491-9726-53B66D2D8C54} = {EED7ECFD-C704-4E59-8055-55A3BEAA31BD}
 		{3AA5DEAF-BF47-48D0-A7C0-66FB414E7AB8} = {2EE60E1C-80BA-4F9F-AF35-1241C010661C}
 		{CE68AED2-3D58-4E35-AE64-D9FAF0D29B18} = {EED7ECFD-C704-4E59-8055-55A3BEAA31BD}
-		{232C1A51-5934-4FBB-AEE4-554575A233E6} = {EED7ECFD-C704-4E59-8055-55A3BEAA31BD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {017299C5-9125-4701-945B-6C0AE5403DEC}
