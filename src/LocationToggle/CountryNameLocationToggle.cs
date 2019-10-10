@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace LocationToggles
 {
-    [DesignType(Description = "Toggle that is active depending on Country names for the request ip location.")]
+    [DesignType(Description = "Toggle that is active depending on Country names for the request ip location.", FriendlyName = "Country Name")]
     [DesignTypeParameter(ParameterName = Countries, ParameterType = EsquioConstants.SEMICOLON_LIST_PARAMETER_TYPE, ParameterDescription = "Collection of country names delimited by ';' character.")]
     public class CountryNameLocationToggle
       : IToggle

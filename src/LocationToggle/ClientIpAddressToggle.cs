@@ -11,18 +11,18 @@ using System.Threading.Tasks;
 
 namespace LocationToggles
 {
-    [DesignType(Description = "The client IP address toggle activates a feature for ip addresses defined in the IP list.")]
+    [DesignType(Description = "The client IP address toggle activates a feature for ip addresses defined in the IP list.", FriendlyName = "Client IP")]
     [DesignTypeParameter(ParameterName = IpAddresses, ParameterType = EsquioConstants.SEMICOLON_LIST_PARAMETER_TYPE, ParameterDescription = "Collection of IP addresses delimited by ';' character.")]
     public class ClientIpAddressToggle : IToggle
     {
         public const string IpAddresses = nameof(IpAddresses);
-        private static readonly char [] separators = new char[] { ';' };
+        private static readonly char[] separators = new char[] { ';' };
         private readonly IRuntimeFeatureStore _featureStore;
         private readonly IHttpContextAccessor _contextAccessor;
         private readonly ILogger<ClientIpAddressToggle> _logger;
 
         public ClientIpAddressToggle(
-            IRuntimeFeatureStore featureStore, 
+            IRuntimeFeatureStore featureStore,
             IHttpContextAccessor contextAccessor,
             ILogger<ClientIpAddressToggle> logger)
         {
@@ -41,15 +41,15 @@ namespace LocationToggles
 
             var ipAddress = _contextAccessor.HttpContext.Connection.RemoteIpAddress;
             var bytes = ipAddress.GetAddressBytes();
-            
+
             _logger.LogDebug($"{nameof(ClientIpAddressToggle)} is trying to verify if '{ipAddress}' is in the IP list.");
 
             var tokenizer = new StringTokenizer(ipAddresses, separators);
 
             foreach (var token in tokenizer)
             {
-                if (token.HasValue 
-                    && IPAddress.TryParse(token, out IPAddress address) 
+                if (token.HasValue
+                    && IPAddress.TryParse(token, out IPAddress address)
                     && address.GetAddressBytes().SequenceEqual(bytes))
                 {
                     _logger.LogInformation($"The client IP address '{ipAddress}' is in the IP '{ipAddresses}' list.");
