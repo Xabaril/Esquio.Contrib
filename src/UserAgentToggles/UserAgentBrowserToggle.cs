@@ -53,10 +53,12 @@ namespace UserAgentToggles
 
                         return true;
                     }
+                    else
+                    {
+                        _logger.LogInformation($"The browser {currentBrowser} is not allowed with the parameter {segment.Value}.");
+                    }
                 }
             }
-
-            _logger.LogInformation($"The browser {currentBrowser} is not allowed using current toggle configuration.");
 
             return false;
         }
