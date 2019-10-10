@@ -47,7 +47,7 @@ namespace UserAgentToggles
 
                 foreach (var segment in tokenizer)
                 {
-                    if (segment.Value?.IndexOf(currentBrowser, StringComparison.InvariantCultureIgnoreCase) >= 0)
+                    if (currentBrowser.IndexOf(segment.Value, StringComparison.InvariantCultureIgnoreCase) >= 0)
                     {
                         _logger.LogInformation($"The browser {currentBrowser} is satisfied using {allowedBrowsers} configuration.");
 
