@@ -10,15 +10,12 @@ using System.Threading.Tasks;
 
 namespace UserAgentToggles
 {
-    [DesignType(Description = "Toggle that is active depending on request browser information.", FriendlyName = "On Browser")]
+    [DesignType(Description = "Toggle that is active depending on request user agent browser information.", FriendlyName = "On Browser")]
     [DesignTypeParameter(ParameterName = Browsers, ParameterType = EsquioConstants.SEMICOLON_LIST_PARAMETER_TYPE, ParameterDescription = "Collection of browser names delimited by ';' character.")]
     public class UserAgentBrowserToggle
         : IToggle
     {
-        private const string UserAgent = "user-agent";
         private const string Browsers = nameof(Browsers);
-
-        static char[] split_characters = new char[] { ';' };
 
         private readonly IHttpContextAccessor _contextAccessor;
         private readonly ILogger<UserAgentBrowserToggle> _logger;
@@ -43,7 +40,7 @@ namespace UserAgentToggles
             {
                 _logger.LogDebug($"{nameof(UserAgentBrowserToggle)} is trying to verify if {currentBrowser} is satisfying allowed browser configuration.");
 
-                var tokenizer = new StringTokenizer(allowedBrowsers, split_characters);
+                var tokenizer = new StringTokenizer(allowedBrowsers, EsquioConstants.DEFAULT_SPLIT_SEPARATOR);
 
                 foreach (var segment in tokenizer)
                 {
@@ -65,6 +62,8 @@ namespace UserAgentToggles
 
         private string GetCurrentBrowser()
         {
+            const string UserAgent = "user-agent";
+
             return _contextAccessor.HttpContext
                 .Request
                 .Headers[UserAgent]

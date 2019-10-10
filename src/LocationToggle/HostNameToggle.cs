@@ -14,7 +14,7 @@ namespace LocationToggles
     public class HostNameToggle : IToggle
     {
         public const string HostNames = nameof(HostNames);
-        private static readonly char[] separators = new char[] { ';' };
+
         private readonly IRuntimeFeatureStore _featureStore;
         private readonly IHttpContextAccessor _contextAccessor;
         private readonly ILogger<HostNameToggle> _logger;
@@ -41,7 +41,7 @@ namespace LocationToggles
 
             _logger.LogDebug($"{nameof(HostNameToggle)} is trying to verify if '{hostName}' is in the hostNames list.");
 
-            var tokenizer = new StringTokenizer(hostNames, separators);
+            var tokenizer = new StringTokenizer(hostNames, EsquioConstants.DEFAULT_SPLIT_SEPARATOR);
 
             foreach (var token in tokenizer)
             {

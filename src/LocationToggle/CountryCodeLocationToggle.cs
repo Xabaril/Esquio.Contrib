@@ -16,8 +16,6 @@ namespace LocationToggles
     {
         const string Countries = nameof(Countries);
 
-        static char[] split_characters = new char[] { ';' };
-
         private readonly IRuntimeFeatureStore _featureStore;
         private readonly ILocationProviderService _locationProviderService;
         private readonly IHttpContextAccessor _httpContextAccessor;
@@ -43,7 +41,7 @@ namespace LocationToggles
                 &&
                 currentCountry != null)
             {
-                var tokenizer = new StringTokenizer(allowedCountries, split_characters);
+                var tokenizer = new StringTokenizer(allowedCountries, EsquioConstants.DEFAULT_SPLIT_SEPARATOR);
 
                 return tokenizer.Contains(currentCountry, StringSegmentComparer.OrdinalIgnoreCase);
             }

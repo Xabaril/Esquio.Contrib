@@ -16,7 +16,7 @@ namespace LocationToggles
     public class ServerIpAddressToggle : IToggle
     {
         public const string IpAddresses = nameof(IpAddresses);
-        private static readonly char[] separators = new char[] { ';' };
+
         private readonly IRuntimeFeatureStore _featureStore;
         private readonly IHttpContextAccessor _contextAccessor;
         private readonly ILogger<ServerIpAddressToggle> _logger;
@@ -42,7 +42,7 @@ namespace LocationToggles
 
             _logger.LogDebug($"{nameof(ServerIpAddressToggle)} is trying to verify if '{ipAddress}' is in the IP list.");
 
-            var tokenizer = new StringTokenizer(ipAddresses, separators);
+            var tokenizer = new StringTokenizer(ipAddresses, EsquioConstants.DEFAULT_SPLIT_SEPARATOR);
 
             foreach (var token in tokenizer)
             {
