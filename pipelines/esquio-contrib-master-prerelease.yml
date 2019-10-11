@@ -57,7 +57,7 @@ steps:
   inputs:
     command: 'pack'
     feedsToUse: 'select'
-    packagesToPack: './src/LocationToEsquio.Toggles.Http/LocationToEsquio.Toggles.Http.csproj'
+    packagesToPack: './src/Esquio.Toggles.Http/Esquio.Toggles.Http.csproj'
     packDirectory: '$(Build.ArtifactStagingDirectory)'
     versioningScheme: 'off'
     buildProperties: 'VersionSuffix=-preview.$(Build.BuildNumber)'
@@ -66,7 +66,7 @@ steps:
   inputs:
     command: 'pack'
     feedsToUse: 'select'
-    packagesToPack: './src/LocationToEsquio.Toggles.GeoLocation/LocationToEsquio.Toggles.GeoLocation.csproj'
+    packagesToPack: './src/Esquio.Toggles.GeoLocation/Esquio.Toggles.GeoLocation.csproj'
     packDirectory: '$(Build.ArtifactStagingDirectory)'
     versioningScheme: 'off'
     buildProperties: 'VersionSuffix=-preview.$(Build.BuildNumber)'
