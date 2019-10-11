@@ -53,7 +53,7 @@ steps:
     testResultsFormat: 'XUnit'
     testResultsFiles: '/home/vsts/work/_temp/*.trx'
 - task: DotNetCoreCLI@2
-  displayName: 'dotnet pack LocationToEsquio.Toggles.Http'
+  displayName: 'dotnet pack Esquio.Toggles.Http'
   inputs:
     command: 'pack'
     feedsToUse: 'select'
@@ -62,7 +62,7 @@ steps:
     versioningScheme: 'off'
     buildProperties: 'VersionSuffix=-preview.$(Build.BuildNumber)'
 - task: DotNetCoreCLI@2
-  displayName: 'dotnet pack LocationToEsquio.Toggles.GeoLocation'
+  displayName: 'dotnet pack Esquio.Toggles.GeoLocation'
   inputs:
     command: 'pack'
     feedsToUse: 'select'
