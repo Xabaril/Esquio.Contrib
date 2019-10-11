@@ -4,14 +4,14 @@
     <TargetFramework>$(NetCoreTargetVersion)</TargetFramework>
     <PackageLicenseUrl>$(PackageLicenseUrl)</PackageLicenseUrl>
     <PackageProjectUrl>$(PackageProjectUrl)</PackageProjectUrl>
-    <Description>Community location toggles for Esquio. For more information see http://github.com/Xabaril/Esquio.Contrib </Description>
-    <PackageTags>Esquio;Location Toggle;AspNetCore</PackageTags>
-    <Version>$(locationtoggles)</Version>
+    <Description>Community Geolocation toggles for Esquio. For more information see http://github.com/Xabaril/Esquio.Contrib </Description>
+    <PackageTags>Esquio;Http;Toggles</PackageTags>
+    <Version>$(esquiotogglesgeolocation)</Version>
     <RepositoryUrl>$(RepositoryUrl)</RepositoryUrl>
     <Company>$(Company)</Company>
     <Authors>$(Authors)</Authors>
-    <PackageId>Esquio.LocationToggles</PackageId>
-    <PackageVersion>$(locationtoggles)</PackageVersion>
+    <PackageId>Esquio.Toggles.GeoLocation</PackageId>
+    <PackageVersion>$(esquiotogglesgeolocation)</PackageVersion>
     <PublishRepositoryUrl>$(RepositoryUrl)</PublishRepositoryUrl>
     <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder)</AllowedOutputExtensionsInPackageBuildOutputFolder>
     <LangVersion>latest</LangVersion>
@@ -21,5 +21,4 @@
     <FrameworkReference Include="Microsoft.AspNetCore.App"/>
     <PackageReference Include="Esquio" Version="$(esquio)" />
   </ItemGroup>
-
 </Project>

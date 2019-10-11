@@ -4,14 +4,14 @@
     <TargetFramework>$(NetCoreTargetVersion)</TargetFramework>
     <PackageLicenseUrl>$(PackageLicenseUrl)</PackageLicenseUrl>
     <PackageProjectUrl>$(PackageProjectUrl)</PackageProjectUrl>
-    <Description>Community user-agent toggles for Esquio. For more information see http://github.com/Xabaril/Esquio.Contrib </Description>
-    <PackageTags>Esquio;UserAgent Toggle;AspNetCore</PackageTags>
-    <Version>$(useragenttoggles)</Version>
+    <Description>Community HTTP request toggles for Esquio. For more information see http://github.com/Xabaril/Esquio.Contrib </Description>
+    <PackageTags>Esquio;Http;Toggles</PackageTags>
+    <Version>$(esquiotoggleshttp)</Version>
     <RepositoryUrl>$(RepositoryUrl)</RepositoryUrl>
     <Company>$(Company)</Company>
     <Authors>$(Authors)</Authors>
-    <PackageId>Esquio.UserAgentToggles</PackageId>
-    <PackageVersion>$(useragenttoggles)</PackageVersion>
+    <PackageId>Esquio.Toggles.Http</PackageId>
+    <PackageVersion>$(esquiotoggleshttp)</PackageVersion>
     <PublishRepositoryUrl>$(RepositoryUrl)</PublishRepositoryUrl>
     <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder)</AllowedOutputExtensionsInPackageBuildOutputFolder>
     <LangVersion>latest</LangVersion>
@@ -19,7 +19,6 @@
 
   <ItemGroup>
     <FrameworkReference Include="Microsoft.AspNetCore.App"/>
-    <PackageReference Include="Esquio" Version="$(esquio)"/>
+    <PackageReference Include="Esquio" Version="$(esquio)" />
   </ItemGroup>
-
 </Project>

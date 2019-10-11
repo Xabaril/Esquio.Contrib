@@ -1,5 +1,4 @@
-﻿using Esquio;
-using Esquio.Abstractions;
+﻿using Esquio.Abstractions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Primitives;
@@ -7,7 +6,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace LocationToggles
+namespace Esquio.Toggles.Http
 {
     [DesignType(Description = "The application hostname toggle activates a feature for client instances with a hostName in the hostNames list.", FriendlyName = "Host Name")]
     [DesignTypeParameter(ParameterName = HostNames, ParameterType = EsquioConstants.SEMICOLON_LIST_PARAMETER_TYPE, ParameterDescription = "Collection of host names delimited by ';' character.")]

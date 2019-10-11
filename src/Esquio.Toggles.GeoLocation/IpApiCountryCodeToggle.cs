@@ -7,24 +7,24 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace LocationToggles
+namespace Esquio.Toggles.GeoLocation
 {
-    [DesignType(Description = "Toggle that is active depending on Country names for the request ip location.", FriendlyName = "Country Name")]
-    [DesignTypeParameter(ParameterName = Countries, ParameterType = EsquioConstants.SEMICOLON_LIST_PARAMETER_TYPE, ParameterDescription = "Collection of country names delimited by ';' character.")]
-    public class CountryNameLocationToggle
+    [DesignType(Description = "Toggle that is active depending on Country code for the request ip location.", FriendlyName = "Country Code")]
+    [DesignTypeParameter(ParameterName = Countries, ParameterType = EsquioConstants.SEMICOLON_LIST_PARAMETER_TYPE, ParameterDescription = "Collection of country codes delimited by ';' character.")]
+    public class IpApiCountryCodeToggle
       : IToggle
     {
         const string Countries = nameof(Countries);
 
+        private readonly IPApiLocationProviderService _locationProviderService = new IPApiLocationProviderService();
+
         private readonly IRuntimeFeatureStore _featureStore;
-        private readonly ILocationProviderService _locationProviderService;
         private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public CountryNameLocationToggle(IRuntimeFeatureStore featureStore, IHttpContextAccessor httpContextAccessor, ILocationProviderService locationProviderService)
+        public IpApiCountryCodeToggle(IRuntimeFeatureStore featureStore, IHttpContextAccessor httpContextAccessor)
         {
             _featureStore = featureStore ?? throw new ArgumentNullException();
             _httpContextAccessor = httpContextAccessor ?? throw new ArgumentNullException(nameof(httpContextAccessor));
-            _locationProviderService = locationProviderService ?? throw new ArgumentNullException(nameof(locationProviderService));
         }
 
         public async Task<bool> IsActiveAsync(string featureName, string productName = null, CancellationToken cancellationToken = default)
@@ -35,7 +35,7 @@ namespace LocationToggles
 
             string allowedCountries = data.Countries;
             var currentCountry = await _locationProviderService
-                .GetCountryName(GetRemoteIpAddress());
+                .GetCountryCode(GetRemoteIpAddress());
 
             if (allowedCountries != null
                 &&

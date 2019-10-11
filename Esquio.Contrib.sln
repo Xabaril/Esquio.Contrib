@@ -10,13 +10,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{3A6AAA24
 		build\dependencies.props = build\dependencies.props
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LocationToggles", "src\LocationToggle\LocationToggles.csproj", "{D5795415-11AF-4491-9726-53B66D2D8C54}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{2EE60E1C-80BA-4F9F-AF35-1241C010661C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FunctionalTests", "tests\FunctionalTests\FunctionalTests.csproj", "{3AA5DEAF-BF47-48D0-A7C0-66FB414E7AB8}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserAgentToggles", "src\UserAgentToggles\UserAgentToggles.csproj", "{CE68AED2-3D58-4E35-AE64-D9FAF0D29B18}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Esquio.Toggles.GeoLocation", "src\Esquio.Toggles.GeoLocation\Esquio.Toggles.GeoLocation.csproj", "{3C2997AD-079E-4BAB-A67C-5B8AAB54E382}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Esquio.Toggles.Http", "src\Esquio.Toggles.Http\Esquio.Toggles.Http.csproj", "{2DCCA3F8-189C-4F4A-918E-A9C4ED7B525F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,26 +24,26 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{D5795415-11AF-4491-9726-53B66D2D8C54}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D5795415-11AF-4491-9726-53B66D2D8C54}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D5795415-11AF-4491-9726-53B66D2D8C54}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D5795415-11AF-4491-9726-53B66D2D8C54}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3AA5DEAF-BF47-48D0-A7C0-66FB414E7AB8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3AA5DEAF-BF47-48D0-A7C0-66FB414E7AB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3AA5DEAF-BF47-48D0-A7C0-66FB414E7AB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3AA5DEAF-BF47-48D0-A7C0-66FB414E7AB8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CE68AED2-3D58-4E35-AE64-D9FAF0D29B18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CE68AED2-3D58-4E35-AE64-D9FAF0D29B18}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CE68AED2-3D58-4E35-AE64-D9FAF0D29B18}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CE68AED2-3D58-4E35-AE64-D9FAF0D29B18}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C2997AD-079E-4BAB-A67C-5B8AAB54E382}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C2997AD-079E-4BAB-A67C-5B8AAB54E382}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C2997AD-079E-4BAB-A67C-5B8AAB54E382}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C2997AD-079E-4BAB-A67C-5B8AAB54E382}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2DCCA3F8-189C-4F4A-918E-A9C4ED7B525F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2DCCA3F8-189C-4F4A-918E-A9C4ED7B525F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2DCCA3F8-189C-4F4A-918E-A9C4ED7B525F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2DCCA3F8-189C-4F4A-918E-A9C4ED7B525F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{D5795415-11AF-4491-9726-53B66D2D8C54} = {EED7ECFD-C704-4E59-8055-55A3BEAA31BD}
 		{3AA5DEAF-BF47-48D0-A7C0-66FB414E7AB8} = {2EE60E1C-80BA-4F9F-AF35-1241C010661C}
-		{CE68AED2-3D58-4E35-AE64-D9FAF0D29B18} = {EED7ECFD-C704-4E59-8055-55A3BEAA31BD}
+		{3C2997AD-079E-4BAB-A67C-5B8AAB54E382} = {EED7ECFD-C704-4E59-8055-55A3BEAA31BD}
+		{2DCCA3F8-189C-4F4A-918E-A9C4ED7B525F} = {EED7ECFD-C704-4E59-8055-55A3BEAA31BD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {017299C5-9125-4701-945B-6C0AE5403DEC}

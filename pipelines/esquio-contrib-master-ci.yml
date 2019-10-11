@@ -57,20 +57,20 @@ steps:
     testResultsFormat: 'XUnit'
     testResultsFiles: '/home/vsts/work/_temp/*.trx'
 - task: DotNetCoreCLI@2
-  displayName: 'dotnet pack LocationToggles'
+  displayName: 'dotnet pack Esquio.Toggles.Http'
   inputs:
     command: 'pack'
     feedsToUse: 'select'
-    packagesToPack: './src/LocationToggle/LocationToggles.csproj'
+    packagesToPack: './src/Esquio.Toggles.Http/Esquio.Toggles.Http.csproj'
     packDirectory: '$(Build.ArtifactStagingDirectory)'
     versioningScheme: 'off'
     buildProperties: 'VersionSuffix=-preview.$(Build.BuildNumber)'
 - task: DotNetCoreCLI@2
-  displayName: 'dotnet pack BrowserToggles'
+  displayName: 'dotnet pack Esquio.Toggles.GeoLocation'
   inputs:
     command: 'pack'
     feedsToUse: 'select'
-    packagesToPack: './src/UserAgentToggles/UserAgentToggles.csproj'
+    packagesToPack: './src/Esquio.Toggles.GeoLocation/Esquio.Toggles.GeoLocation.csproj'
     packDirectory: '$(Build.ArtifactStagingDirectory)'
     versioningScheme: 'off'
     buildProperties: 'VersionSuffix=-preview.$(Build.BuildNumber)'

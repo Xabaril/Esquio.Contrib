@@ -8,7 +8,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace UserAgentToggles
+namespace Esquio.Toggles.Http
 {
     [DesignType(Description = "Toggle that is active depending on request user agent browser information.", FriendlyName = "On Browser")]
     [DesignTypeParameter(ParameterName = Browsers, ParameterType = EsquioConstants.SEMICOLON_LIST_PARAMETER_TYPE, ParameterDescription = "Collection of browser names delimited by ';' character.")]

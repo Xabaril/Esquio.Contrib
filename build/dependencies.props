@@ -17,8 +17,8 @@
   </PropertyGroup>
 
   <PropertyGroup Label="Package Versions">
-    <locationtoggles>1.1.1$(VersionSuffix)</locationtoggles>
-    <useragenttoggles>1.1.1$(VersionSuffix)</useragenttoggles>
+    <esquiotoggleshttp>1.1.0$(VersionSuffix)</esquiotoggleshttp>
+    <esquiotogglesgeolocation>1.1.0$(VersionSuffix)</esquiotogglesgeolocation>
   </PropertyGroup>
   
   <PropertyGroup Label="Esquio Dependencies">

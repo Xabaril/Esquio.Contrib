@@ -1,8 +1,8 @@
 ﻿using Esquio.Abstractions;
 using Esquio.Model;
+using Esquio.Toggles.Http;
 using FluentAssertions;
 using FunctionalTests.Seedwork;
-using LocationToggles;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging.Abstractions;
 using System;

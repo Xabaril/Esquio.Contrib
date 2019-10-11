@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup Label="Project dependencies">
-    <FrameworkReference Include="Microsoft.AspNetCore.App"/>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Esquio" Version="$(esquio)" />  
   </ItemGroup>
 
@@ -19,7 +19,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\LocationToggle\LocationToggles.csproj" />
+    <ProjectReference Include="..\..\src\Esquio.Http\Esquio.Toggles.Http.csproj" />
+    <ProjectReference Include="..\..\src\Esquio.Toggles.GeoLocation\Esquio.Toggles.GeoLocation.csproj" />
+    <ProjectReference Include="..\..\src\Esquio.Toggles.Http\Esquio.Toggles.Http.csproj" />
   </ItemGroup>
 
 </Project>
