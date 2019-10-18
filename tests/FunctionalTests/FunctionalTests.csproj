@@ -19,7 +19,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Esquio.Http\Esquio.Toggles.Http.csproj" />
     <ProjectReference Include="..\..\src\Esquio.Toggles.GeoLocation\Esquio.Toggles.GeoLocation.csproj" />
     <ProjectReference Include="..\..\src\Esquio.Toggles.Http\Esquio.Toggles.Http.csproj" />
   </ItemGroup>
