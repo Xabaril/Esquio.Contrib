@@ -8,17 +8,14 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace UserAgentToggles
+namespace Esquio.Toggles.Http
 {
-    [DesignType(Description = "Toggle that is active depending on request browser information.")]
-    [DesignTypeParameter(ParameterName = Browsers, ParameterType = EsquioConstants.SEMICOLON_LIST_PARAMETER_TYPE, ParameterDescription = "ª")]
+    [DesignType(Description = "Toggle that is active depending on request user agent browser information.", FriendlyName = "On Browser")]
+    [DesignTypeParameter(ParameterName = Browsers, ParameterType = EsquioConstants.SEMICOLON_LIST_PARAMETER_TYPE, ParameterDescription = "Collection of browser names delimited by ';' character.")]
     public class UserAgentBrowserToggle
         : IToggle
     {
-        private const string UserAgent = "user-agent";
         private const string Browsers = nameof(Browsers);
-
-        static char[] split_characters = new char[] { ';' };
 
         private readonly IHttpContextAccessor _contextAccessor;
         private readonly ILogger<UserAgentBrowserToggle> _logger;
@@ -43,26 +40,30 @@ namespace UserAgentToggles
             {
                 _logger.LogDebug($"{nameof(UserAgentBrowserToggle)} is trying to verify if {currentBrowser} is satisfying allowed browser configuration.");
 
-                var tokenizer = new StringTokenizer(allowedBrowsers, split_characters);
+                var tokenizer = new StringTokenizer(allowedBrowsers, EsquioConstants.DEFAULT_SPLIT_SEPARATOR);
 
                 foreach (var segment in tokenizer)
                 {
-                    if (segment.Value?.IndexOf(currentBrowser, StringComparison.InvariantCultureIgnoreCase) >= 0)
+                    if (currentBrowser.IndexOf(segment.Value, StringComparison.InvariantCultureIgnoreCase) >= 0)
                     {
                         _logger.LogInformation($"The browser {currentBrowser} is satisfied using {allowedBrowsers} configuration.");
 
                         return true;
                     }
+                    else
+                    {
+                        _logger.LogInformation($"The browser {currentBrowser} is not allowed with the parameter {segment.Value}.");
+                    }
                 }
             }
-
-            _logger.LogInformation($"The browser {currentBrowser} is not allowed using current toggle configuration.");
 
             return false;
         }
 
         private string GetCurrentBrowser()
         {
+            const string UserAgent = "user-agent";
+
             return _contextAccessor.HttpContext
                 .Request
                 .Headers[UserAgent]

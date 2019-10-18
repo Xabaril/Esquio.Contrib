@@ -1,5 +1,4 @@
-﻿using Esquio;
-using Esquio.Abstractions;
+﻿using Esquio.Abstractions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Primitives;
@@ -7,20 +6,20 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace LocationToggles
+namespace Esquio.Toggles.Http
 {
-    [DesignType(Description = "The application hostname toggle activates a feature for client instances with a hostName in the hostNames list.")]
+    [DesignType(Description = "The application hostname toggle activates a feature for client instances with a hostName in the hostNames list.", FriendlyName = "Host Name")]
     [DesignTypeParameter(ParameterName = HostNames, ParameterType = EsquioConstants.SEMICOLON_LIST_PARAMETER_TYPE, ParameterDescription = "Collection of host names delimited by ';' character.")]
     public class HostNameToggle : IToggle
     {
         public const string HostNames = nameof(HostNames);
-        private static readonly char [] separators = new char[] { ';' };
+
         private readonly IRuntimeFeatureStore _featureStore;
         private readonly IHttpContextAccessor _contextAccessor;
         private readonly ILogger<HostNameToggle> _logger;
 
         public HostNameToggle(
-            IRuntimeFeatureStore featureStore, 
+            IRuntimeFeatureStore featureStore,
             IHttpContextAccessor contextAccessor,
             ILogger<HostNameToggle> logger)
         {
@@ -38,10 +37,10 @@ namespace LocationToggles
             string hostNames = data.HostNames;
 
             var hostName = _contextAccessor.HttpContext.Request.Host.Host;
-            
+
             _logger.LogDebug($"{nameof(HostNameToggle)} is trying to verify if '{hostName}' is in the hostNames list.");
 
-            var tokenizer = new StringTokenizer(hostNames, separators);
+            var tokenizer = new StringTokenizer(hostNames, EsquioConstants.DEFAULT_SPLIT_SEPARATOR);
 
             foreach (var token in tokenizer)
             {

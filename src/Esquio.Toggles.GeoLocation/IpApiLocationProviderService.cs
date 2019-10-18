@@ -1,15 +1,14 @@
-﻿using Microsoft.Extensions.Logging;
-using System;
-using System.Net.Http;
+﻿using System.Net.Http;
 using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace LocationToggles.Providers
+namespace Esquio.Toggles.GeoLocation
 {
-    public class IPApiLocationProviderService
-       : ILocationProviderService
+    internal class IPApiLocationProviderService
     {
+        static HttpClient _httpClient = new HttpClient();
+
         const string IP_API_LOCATION_SERVICE = nameof(IP_API_LOCATION_SERVICE);
         const string BASE_ADDRESS = "http://ip-api.com/json/";
 
@@ -19,16 +18,6 @@ namespace LocationToggles.Providers
             DictionaryKeyPolicy = JsonNamingPolicy.CamelCase,
             AllowTrailingCommas = true
         };
-
-        private readonly IHttpClientFactory _httpClientFactory;
-        private readonly ILogger<IPApiLocationProviderService> _logger;
-
-        public IPApiLocationProviderService(IHttpClientFactory httpClientFactory, ILogger<IPApiLocationProviderService> logger)
-        {
-            _httpClientFactory = httpClientFactory ?? throw new ArgumentNullException(nameof(httpClientFactory));
-            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
-        }
-
 
         public async Task<string> GetCountryName(string ipaddress, CancellationToken cancellationToken = default)
         {
@@ -46,32 +35,23 @@ namespace LocationToggles.Providers
 
         private async Task<IPApiData> GetIpDataFrom(string ipaddress, CancellationToken cancellationToken = default)
         {
-            try
+
+            var response = await _httpClient.GetAsync($"{BASE_ADDRESS}{ipaddress}", cancellationToken);
+
+            if (response.IsSuccessStatusCode)
             {
-                var httpClient = _httpClientFactory
-                    .CreateClient(IP_API_LOCATION_SERVICE);
+                var stream = await response.Content.ReadAsStreamAsync();
 
-                var response = await httpClient.GetAsync($"{BASE_ADDRESS}{ipaddress}", cancellationToken);
-
-                if (response.IsSuccessStatusCode)
-                {
-                    var stream = await response.Content.ReadAsStreamAsync();
-
-                    return await JsonSerializer.DeserializeAsync<IPApiData>(
-                        utf8Json: stream,
-                        options: _serializerOptions,
-                        cancellationToken);
-                }
-            }
-            catch (Exception exception)
-            {
-                _logger.LogError(exception, "IpApiLocationProviderService throw an exception when trying to get country information");
+                return await JsonSerializer.DeserializeAsync<IPApiData>(
+                    utf8Json: stream,
+                    options: _serializerOptions,
+                    cancellationToken);
             }
 
             return default;
         }
 
-        public class IPApiData
+        internal class IPApiData
         {
             public string Query { get; set; }
             public string Status { get; set; }

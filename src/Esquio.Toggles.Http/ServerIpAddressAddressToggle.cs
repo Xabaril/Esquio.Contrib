@@ -9,20 +9,20 @@ using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace LocationToggles
+namespace Esquio.Toggles.Http
 {
-    [DesignType(Description = "The server IP address toggle activates a feature for ip addresses defined in the IP list.")]
+    [DesignType(Description = "The server IP address toggle activates a feature for ip addresses defined in the IP list.", FriendlyName = "Server IP")]
     [DesignTypeParameter(ParameterName = IpAddresses, ParameterType = EsquioConstants.SEMICOLON_LIST_PARAMETER_TYPE, ParameterDescription = "Collection of IP addresses delimited by ';' character.")]
     public class ServerIpAddressToggle : IToggle
     {
         public const string IpAddresses = nameof(IpAddresses);
-        private static readonly char [] separators = new char[] { ';' };
+
         private readonly IRuntimeFeatureStore _featureStore;
         private readonly IHttpContextAccessor _contextAccessor;
         private readonly ILogger<ServerIpAddressToggle> _logger;
 
         public ServerIpAddressToggle(
-            IRuntimeFeatureStore featureStore, 
+            IRuntimeFeatureStore featureStore,
             IHttpContextAccessor contextAccessor,
             ILogger<ServerIpAddressToggle> logger)
         {
@@ -39,15 +39,15 @@ namespace LocationToggles
             var ipAddress = _contextAccessor.HttpContext.Connection.LocalIpAddress;
             var bytes = ipAddress.GetAddressBytes();
             string ipAddresses = data.IpAddresses;
-            
+
             _logger.LogDebug($"{nameof(ServerIpAddressToggle)} is trying to verify if '{ipAddress}' is in the IP list.");
 
-            var tokenizer = new StringTokenizer(ipAddresses, separators);
+            var tokenizer = new StringTokenizer(ipAddresses, EsquioConstants.DEFAULT_SPLIT_SEPARATOR);
 
             foreach (var token in tokenizer)
             {
-                if (token.HasValue 
-                    && IPAddress.TryParse(token, out IPAddress address) 
+                if (token.HasValue
+                    && IPAddress.TryParse(token, out IPAddress address)
                     && address.GetAddressBytes().SequenceEqual(bytes))
                 {
                     _logger.LogInformation($"The server IP address '{ipAddress}' is in the IP '{ipAddresses}' list.");

@@ -1,5 +1,4 @@
-﻿using Esquio;
-using Esquio.Abstractions;
+﻿using Esquio.Abstractions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Primitives;
 using System;
@@ -7,26 +6,24 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace LocationToggles
+namespace Esquio.Toggles.GeoLocation
 {
-    [DesignType(Description = "Toggle that is active depending on Country names for the request ip location.")]
+    [DesignType(Description = "Toggle that is active depending on Country names for the request ip location.", FriendlyName = "Country Name")]
     [DesignTypeParameter(ParameterName = Countries, ParameterType = EsquioConstants.SEMICOLON_LIST_PARAMETER_TYPE, ParameterDescription = "Collection of country names delimited by ';' character.")]
-    public class CountryNameLocationToggle
+    public class IpApiContryNameToggle
       : IToggle
     {
         const string Countries = nameof(Countries);
 
-        static char[] split_characters = new char[] { ';' };
+        private readonly IPApiLocationProviderService _locationProviderService = new IPApiLocationProviderService();
 
         private readonly IRuntimeFeatureStore _featureStore;
-        private readonly ILocationProviderService _locationProviderService;
         private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public CountryNameLocationToggle(IRuntimeFeatureStore featureStore, IHttpContextAccessor httpContextAccessor, ILocationProviderService locationProviderService)
+        public IpApiContryNameToggle(IRuntimeFeatureStore featureStore, IHttpContextAccessor httpContextAccessor)
         {
             _featureStore = featureStore ?? throw new ArgumentNullException();
             _httpContextAccessor = httpContextAccessor ?? throw new ArgumentNullException(nameof(httpContextAccessor));
-            _locationProviderService = locationProviderService ?? throw new ArgumentNullException(nameof(locationProviderService));
         }
 
         public async Task<bool> IsActiveAsync(string featureName, string productName = null, CancellationToken cancellationToken = default)
@@ -36,6 +33,7 @@ namespace LocationToggles
             var data = toggle.GetData();
 
             string allowedCountries = data.Countries;
+
             var currentCountry = await _locationProviderService
                 .GetCountryName(GetRemoteIpAddress());
 
@@ -43,7 +41,7 @@ namespace LocationToggles
                 &&
                 currentCountry != null)
             {
-                var tokenizer = new StringTokenizer(allowedCountries, split_characters);
+                var tokenizer = new StringTokenizer(allowedCountries, EsquioConstants.DEFAULT_SPLIT_SEPARATOR);
 
                 return tokenizer.Contains(currentCountry, StringSegmentComparer.OrdinalIgnoreCase);
             }

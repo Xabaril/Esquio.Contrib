@@ -1,7 +1,6 @@
-﻿using FluentAssertions;
+﻿using Esquio.Toggles.GeoLocation;
+using FluentAssertions;
 using FunctionalTests.Seedwork;
-using LocationToggles;
-using LocationToggles.Providers;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using System;
@@ -23,7 +22,7 @@ namespace FunctionalTests.LocationToggles.IpApi
 
             await Assert.ThrowsAsync<ArgumentNullException>(async () =>
             {
-                await new CountryCodeLocationToggle(null, new DefaulHttpContextAccessor(), GetIpApiLocationProviderService())
+                await new IpApiCountryCodeToggle(null, new DefaulHttpContextAccessor())
                     .IsActiveAsync(featureName);
             });
         }
@@ -34,7 +33,7 @@ namespace FunctionalTests.LocationToggles.IpApi
             var featureName = "feature-1";
 
             var toggle = Build
-                  .Toggle<CountryCodeLocationToggle>()
+                  .Toggle<IpApiCountryCodeToggle>()
                   .AddOneParameter(Countries, "ES;FR;IT")
                   .Build();
 
@@ -51,46 +50,19 @@ namespace FunctionalTests.LocationToggles.IpApi
 
             await Assert.ThrowsAsync<ArgumentNullException>(async () =>
             {
-                await new CountryCodeLocationToggle(store, null, GetIpApiLocationProviderService())
+                await new IpApiCountryCodeToggle(store, null)
                     .IsActiveAsync(featureName);
             });
         }
 
-        [Fact]
-        public async Task throw_if_location_service_is_null()
-        {
-            var featureName = "feature-1";
-
-            var toggle = Build
-                  .Toggle<CountryCodeLocationToggle>()
-                  .AddOneParameter(Countries, "ES;FR;IT")
-                  .Build();
-
-            var feature = Build
-                .Feature(featureName)
-                .AddOne(toggle)
-                .Build();
-
-            var store = new DelegatedValueFeatureStore((_, __) =>
-            {
-                return feature;
-            });
-
-
-            await Assert.ThrowsAsync<ArgumentNullException>(async () =>
-            {
-                await new CountryCodeLocationToggle(store, new DefaulHttpContextAccessor(), null)
-                    .IsActiveAsync(featureName);
-            });
-        }
-
+      
         [Fact]
         public async Task be_active_if_allowed_countries_include_request_origin_country()
         {
             var featureName = "feature-1";
 
             var toggle = Build
-                  .Toggle<CountryCodeLocationToggle>()
+                  .Toggle<IpApiCountryCodeToggle>()
                   .AddOneParameter(Countries, "ES;FR;IT")
                   .Build();
 
@@ -104,7 +76,7 @@ namespace FunctionalTests.LocationToggles.IpApi
                 return feature;
             });
 
-            var isActive = await new CountryCodeLocationToggle(store, new DefaulHttpContextAccessor(), GetIpApiLocationProviderService())
+            var isActive = await new IpApiCountryCodeToggle(store, new DefaulHttpContextAccessor())
                 .IsActiveAsync(featureName);
 
             isActive.Should().BeTrue();
@@ -116,7 +88,7 @@ namespace FunctionalTests.LocationToggles.IpApi
             var featureName = "feature-1";
 
             var toggle = Build
-                  .Toggle<CountryCodeLocationToggle>()
+                  .Toggle<IpApiCountryCodeToggle>()
                   .AddOneParameter(Countries, "ES")
                   .Build();
 
@@ -130,7 +102,7 @@ namespace FunctionalTests.LocationToggles.IpApi
                 return feature;
             });
 
-            var isActive = await new CountryCodeLocationToggle(store, new DefaulHttpContextAccessor(), GetIpApiLocationProviderService())
+            var isActive = await new IpApiCountryCodeToggle(store, new DefaulHttpContextAccessor())
                 .IsActiveAsync(featureName);
 
             isActive.Should().BeTrue();
@@ -142,7 +114,7 @@ namespace FunctionalTests.LocationToggles.IpApi
             var featureName = "feature-1";
 
             var toggle = Build
-                  .Toggle<CountryCodeLocationToggle>()
+                  .Toggle<IpApiCountryCodeToggle>()
                   .AddOneParameter(Countries, "FR")
                   .Build();
 
@@ -156,30 +128,12 @@ namespace FunctionalTests.LocationToggles.IpApi
                 return feature;
             });
 
-            var isActive = await new CountryCodeLocationToggle(store, new DefaulHttpContextAccessor(), GetIpApiLocationProviderService())
+            var isActive = await new IpApiCountryCodeToggle(store, new DefaulHttpContextAccessor())
                 .IsActiveAsync(featureName);
 
             isActive.Should().BeFalse();
         }
 
-        private IPApiLocationProviderService GetIpApiLocationProviderService()
-        {
-            var logFactory = new LoggerFactory();
-            var logger = logFactory.CreateLogger<IPApiLocationProviderService>();
-
-            return new IPApiLocationProviderService(
-                new DefaultHttpClientFactory(),
-                logger);
-        }
-
-        private class DefaultHttpClientFactory
-            : IHttpClientFactory
-        {
-            public HttpClient CreateClient(string name)
-            {
-                return new HttpClient();
-            }
-        }
 
         private class DefaulHttpContextAccessor
             : IHttpContextAccessor
