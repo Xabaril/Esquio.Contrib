@@ -17,12 +17,12 @@
   </PropertyGroup>
 
   <PropertyGroup Label="Package Versions">
-    <esquiotoggleshttp>1.1.0$(VersionSuffix)</esquiotoggleshttp>
-    <esquiotogglesgeolocation>1.1.0$(VersionSuffix)</esquiotogglesgeolocation>
+    <esquiotoggleshttp>1.1.1$(VersionSuffix)</esquiotoggleshttp>
+    <esquiotogglesgeolocation>1.1.1$(VersionSuffix)</esquiotogglesgeolocation>
   </PropertyGroup>
   
   <PropertyGroup Label="Esquio Dependencies">
-    <esquio>1.1.0</esquio>
+    <esquio>1.1.1</esquio>
   </PropertyGroup>
 
   <PropertyGroup Label="Testing Dependencies">
