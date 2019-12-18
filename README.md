@@ -23,6 +23,9 @@ install-package Esquio.LocationToggles
 Now, you can register new toggles on *Esquio* setup.
 
 ```csharp
+    services.AddScoped<ILocationProviderService, IPApiLocationProviderService>();
+    services.AddHttpClient();
+            
     services.AddEsquio(setup => setup.RegisterTogglesFromAssembly(typeof(CountryNameLocationToggle).Assembly))
         .AddAspNetCoreDefaultServices()
         .AddConfigurationStore(Configuration, "Esquio")
@@ -74,6 +77,9 @@ install-package Esquio.LocationToggles
 Now, you can register new toggles on *Esquio* setup.
 
 ```csharp
+    services.AddScoped<ILocationProviderService, IPApiLocationProviderService>();
+    services.AddHttpClient();
+    
     services.AddEsquio(setup => setup.RegisterTogglesFromAssembly(typeof(CountryNameLocationToggle).Assembly))
         .AddAspNetCoreDefaultServices()
         .AddConfigurationStore(Configuration, "Esquio")
@@ -124,7 +130,7 @@ install-package Esquio.LocationToggles
 
 Now, you can register new toggles on *Esquio* setup.
 
-```csharp
+```csharp   
     services
         .AddEsquio(setup => 
           setup.RegisterTogglesFromAssembly(typeof(ClientIpAddressToggle).Assembly)
@@ -178,7 +184,7 @@ install-package Esquio.LocationToggles
 
 Now, you can register new toggles on *Esquio* setup.
 
-```csharp
+```csharp  
     services
         .AddEsquio(setup => 
           setup.RegisterTogglesFromAssembly(typeof(ServerIpAddressToggle).Assembly)
