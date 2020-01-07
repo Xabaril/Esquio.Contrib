@@ -1,4 +1,6 @@
-[![Build Status](https://dev.azure.com/xabaril/Esquio.Contrib/_apis/build/status/esquio-contrib-master-ci?branchName=master)](https://dev.azure.com/xabaril/Esquio.Contrib/_build/latest?definitionId=6&branchName=master)
+![Esquio Build](https://github.com/xabaril/Esquio.Contrib/workflows/Esquio%20Contrib%20Continous%20Integration/badge.svg?branch=master)
+
+![Esquio Build](https://github.com/xabaril/Esquio.Contrib/workflows/Esquio%20Contrib%20Nightly%20Build/badge.svg?branch=master)
 
 # Esquio.Contrib
 
