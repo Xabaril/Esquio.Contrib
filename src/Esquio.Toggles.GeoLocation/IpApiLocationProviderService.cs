@@ -35,7 +35,6 @@ namespace Esquio.Toggles.GeoLocation
 
         private async Task<IPApiData> GetIpDataFrom(string ipaddress, CancellationToken cancellationToken = default)
         {
-
             var response = await _httpClient.GetAsync($"{BASE_ADDRESS}{ipaddress}", cancellationToken);
 
             if (response.IsSuccessStatusCode)

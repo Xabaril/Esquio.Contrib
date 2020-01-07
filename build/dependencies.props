@@ -18,17 +18,17 @@
 
   <PropertyGroup Label="Package Versions">
     <esquiotoggleshttp>2.0.0$(VersionSuffix)</esquiotoggleshttp>
-    <esquiotogglesgeolocation>2.0.0$(VersionSuffix)</esquiotogglesgeolocation>
+    <esquiotogglesgeolocation>2.0.1$(VersionSuffix)</esquiotogglesgeolocation>
   </PropertyGroup>
   
   <PropertyGroup Label="Esquio Dependencies">
-    <esquio>2.0.0</esquio>
+    <esquio>2.0.1</esquio>
   </PropertyGroup>
 
   <PropertyGroup Label="Testing Dependencies">
     <xunit>2.4.1</xunit>
     <xunitrunner>2.4.1</xunitrunner>
-    <fluentassertions>5.9 .0</fluentassertions>
+    <fluentassertions>5.9.0</fluentassertions>
   </PropertyGroup>
   
   <PropertyGroup Label="CLI Tools Versions">

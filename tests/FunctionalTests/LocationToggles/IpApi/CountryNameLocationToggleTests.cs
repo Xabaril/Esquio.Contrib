@@ -2,16 +2,14 @@
 using FluentAssertions;
 using FunctionalTests.Seedwork;
 using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Logging;
 using System;
 using System.Net;
-using System.Net.Http;
 using System.Threading.Tasks;
 using Xunit;
 
 namespace FunctionalTests.LocationToggles.IpApi
 {
-    public class ipapi_countrynamelocationtoggle_should
+    public class countrynamelocationtoggle_should
     {
         private const string Countries = nameof(Countries);
 
@@ -22,7 +20,7 @@ namespace FunctionalTests.LocationToggles.IpApi
 
             await Assert.ThrowsAsync<ArgumentNullException>(async () =>
             {
-                await new IpApiContryNameToggle(null, new DefaulHttpContextAccessor())
+                await new IpApiCountryNameToggle(null, new DefaulHttpContextAccessor())
                     .IsActiveAsync(featureName);
             });
         }
@@ -33,7 +31,7 @@ namespace FunctionalTests.LocationToggles.IpApi
             var featureName = "feature-1";
 
             var toggle = Build
-                  .Toggle<IpApiContryNameToggle>()
+                  .Toggle<IpApiCountryNameToggle>()
                   .AddOneParameter(Countries, "Spain;France;Germany")
                   .Build();
 
@@ -50,7 +48,7 @@ namespace FunctionalTests.LocationToggles.IpApi
 
             await Assert.ThrowsAsync<ArgumentNullException>(async () =>
             {
-                await new IpApiContryNameToggle(store, null)
+                await new IpApiCountryNameToggle(store, null)
                     .IsActiveAsync(featureName);
             });
         }
@@ -61,7 +59,7 @@ namespace FunctionalTests.LocationToggles.IpApi
             var featureName = "feature-1";
 
             var toggle = Build
-                  .Toggle<IpApiContryNameToggle>()
+                  .Toggle<IpApiCountryNameToggle>()
                   .AddOneParameter(Countries, "Spain;France;Germany")
                   .Build();
 
@@ -75,7 +73,7 @@ namespace FunctionalTests.LocationToggles.IpApi
                 return feature;
             });
 
-            var isActive = await new IpApiContryNameToggle(store, new DefaulHttpContextAccessor())
+            var isActive = await new IpApiCountryNameToggle(store, new DefaulHttpContextAccessor())
                 .IsActiveAsync(featureName);
 
             isActive.Should().BeTrue();
@@ -87,7 +85,7 @@ namespace FunctionalTests.LocationToggles.IpApi
             var featureName = "feature-1";
 
             var toggle = Build
-                  .Toggle<IpApiContryNameToggle>()
+                  .Toggle<IpApiCountryNameToggle>()
                   .AddOneParameter(Countries, "Spain")
                   .Build();
 
@@ -101,7 +99,7 @@ namespace FunctionalTests.LocationToggles.IpApi
                 return feature;
             });
 
-            var isActive = await new IpApiContryNameToggle(store, new DefaulHttpContextAccessor())
+            var isActive = await new IpApiCountryNameToggle(store, new DefaulHttpContextAccessor())
                 .IsActiveAsync(featureName);
 
             isActive.Should().BeTrue();
@@ -113,7 +111,7 @@ namespace FunctionalTests.LocationToggles.IpApi
             var featureName = "feature-1";
 
             var toggle = Build
-                  .Toggle<IpApiContryNameToggle>()
+                  .Toggle<IpApiCountryNameToggle>()
                   .AddOneParameter(Countries, "France")
                   .Build();
 
@@ -127,7 +125,7 @@ namespace FunctionalTests.LocationToggles.IpApi
                 return feature;
             });
 
-            var isActive = await new IpApiContryNameToggle(store, new DefaulHttpContextAccessor())
+            var isActive = await new IpApiCountryNameToggle(store, new DefaulHttpContextAccessor())
                 .IsActiveAsync(featureName);
 
             isActive.Should().BeFalse();

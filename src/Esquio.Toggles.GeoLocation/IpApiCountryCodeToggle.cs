@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Esquio.Toggles.GeoLocation
 {
-    [DesignType(Description = "Toggle that is active depending on Country code for the request ip location.", FriendlyName = "Country Code")]
+    [DesignType(Description = "Toggle that is active depending on Country code for the request ip location using IpApi service.", FriendlyName = "IpApi Country Code")]
     [DesignTypeParameter(ParameterName = Countries, ParameterType = EsquioConstants.SEMICOLON_LIST_PARAMETER_TYPE, ParameterDescription = "Collection of country codes delimited by ';' character.")]
     public class IpApiCountryCodeToggle
       : IToggle

@@ -8,19 +8,21 @@ using System.Threading.Tasks;
 
 namespace Esquio.Toggles.GeoLocation
 {
-    [DesignType(Description = "Toggle that is active depending on Country names for the request ip location using IpApi service.", FriendlyName = "IpApi Country Name")]
-    [DesignTypeParameter(ParameterName = Countries, ParameterType = EsquioConstants.SEMICOLON_LIST_PARAMETER_TYPE, ParameterDescription = "Collection of country names delimited by ';' character.")]
-    public class IpApiCountryNameToggle
+    [DesignType(Description = "Toggle that is active depending on continent name for the request ip location using IpStack service.", FriendlyName = "IpStack Continent Name")]
+    [DesignTypeParameter(ParameterName = Continents, ParameterType = EsquioConstants.SEMICOLON_LIST_PARAMETER_TYPE, ParameterDescription = "Collection of continent names delimited by ';' character.")]
+    [DesignTypeParameter(ParameterName = AccessKey, ParameterType = EsquioConstants.STRING_PARAMETER_TYPE, ParameterDescription = "A valid  IpStack Access Key.")]
+    public class IpStackContinentNameToggle
       : IToggle
     {
-        const string Countries = nameof(Countries);
+        const string Continents = nameof(Continents);
+        const string AccessKey = nameof(AccessKey);
 
-        private readonly IPApiLocationProviderService _locationProviderService = new IPApiLocationProviderService();
+        private readonly IpStackLocationProviderService _locationProviderService = new IpStackLocationProviderService();
 
         private readonly IRuntimeFeatureStore _featureStore;
         private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public IpApiCountryNameToggle(IRuntimeFeatureStore featureStore, IHttpContextAccessor httpContextAccessor)
+        public IpStackContinentNameToggle(IRuntimeFeatureStore featureStore, IHttpContextAccessor httpContextAccessor)
         {
             _featureStore = featureStore ?? throw new ArgumentNullException();
             _httpContextAccessor = httpContextAccessor ?? throw new ArgumentNullException(nameof(httpContextAccessor));
@@ -32,18 +34,19 @@ namespace Esquio.Toggles.GeoLocation
             var toggle = feature.GetToggle(this.GetType().FullName);
             var data = toggle.GetData();
 
-            string allowedCountries = data.Countries;
+            string allowedContinents = data.Continents;
+            string accessKey = data.AccessKey;
 
-            var currentCountry = await _locationProviderService
-                .GetCountryName(GetRemoteIpAddress());
+            var currentContinent = await _locationProviderService
+                .GetContinentName(GetRemoteIpAddress(), accessKey);
 
-            if (allowedCountries != null
+            if (allowedContinents != null
                 &&
-                currentCountry != null)
+                currentContinent != null)
             {
-                var tokenizer = new StringTokenizer(allowedCountries, EsquioConstants.DEFAULT_SPLIT_SEPARATOR);
+                var tokenizer = new StringTokenizer(allowedContinents, EsquioConstants.DEFAULT_SPLIT_SEPARATOR);
 
-                return tokenizer.Contains(currentCountry, StringSegmentComparer.OrdinalIgnoreCase);
+                return tokenizer.Contains(currentContinent, StringSegmentComparer.OrdinalIgnoreCase);
             }
 
             return false;
