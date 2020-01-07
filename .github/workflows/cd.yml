@@ -1,9 +1,11 @@
 name: Esquio Contrib Continous Deployment
 on: 
+  # push:
+  #   tags:       
+  #     - release-*  # Push events to release-* 
   push:
-    tags:       
-      - release-*  # Push events to release-* 
-      
+    branches: 
+      - master
 jobs:
   build:
     env:
