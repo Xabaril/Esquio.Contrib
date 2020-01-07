@@ -1,4 +1,4 @@
-name: Esquio Continous Integration
+name: Esquio Contrib Continous Integration
 on: 
   pull_request:
     branches: 
