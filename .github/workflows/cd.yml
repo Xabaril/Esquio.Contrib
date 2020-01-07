@@ -1,11 +1,8 @@
 name: Esquio Contrib Continous Deployment
 on: 
-  # push:
-  #   tags:       
-  #     - release-*  # Push events to release-* 
   push:
-    branches: 
-      - master
+    tags:       
+      - release-*  # Push events to release-* 
 jobs:
   build:
     env:
@@ -32,4 +29,4 @@ jobs:
       with:
         nuget-version: latest
     - name: push packages
-      run: dotnet nuget push ./artifacts/*.nupkg -k ${{ secrets.NUGET_API_KEY }} -s https://api.nuget.org/v3/index.json --skip-duplicate
+      run: dotnet nuget push ./artifacts/*.nupkg -k ${{secrets.NUGET_API_KEY}} -s https://api.nuget.org/v3/index.json --skip-duplicate
