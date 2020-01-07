@@ -308,7 +308,7 @@ and configure your features using this new toggle, as we show on next configurat
             "Enabled": true,
             "Toggles": [
               {
-                "Type": "UserAgentToggles.UserAgentBrowserToggle, UseAgentToggles",
+                "Type": "UserAgentToggles.UserAgentBrowserToggle, UserAgentToggles",
                 "Parameters": {
                   "Browsers": "Chrome"
                 }
